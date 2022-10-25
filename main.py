@@ -67,6 +67,8 @@ def index():
                     if 'payload' in response_msg and 'platform' in response_msg.get('payload'):
                         if response_msg.get('payload').get('platform') == 'ZOHOSALESIQ':
                             response_json = response_msg.get('payload')
+                    if 'text' in response_msg:
+                        response_json['replies'] = response_msg['text']['text']
                 return response_json
 
         except Exception as e:
